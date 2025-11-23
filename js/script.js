@@ -82,3 +82,58 @@ function setupProjectFiltering() {
 // CRITERIA 3: Modular Code - Call the new function to initialize the feature
 document.addEventListener('DOMContentLoaded', setupProjectFiltering);
 // We now have 3/7 required JS features implemented!
+
+// JS Feature 6: Contact Form Validation (Front-end Only)
+function setupFormValidation() {
+    const form = document.getElementById('contact-form');
+    const messageDisplay = document.getElementById('form-message');
+
+    if (!form) return; // Exit if form element doesn't exist
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Stop the default form submission
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        // Simple Email Regex check
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+
+        if (name === '' || email === '' || message === '') {
+            // CRITERIA 3: Console errors check. Use console.error for actual errors, console.log for simple debugging.
+            console.warn("Validation Error: All fields are required.");
+            messageDisplay.classList.remove('hidden');
+            messageDisplay.style.backgroundColor = 'rgba(255, 99, 71, 0.2)'; // Light tomato red
+            messageDisplay.style.color = 'darkred';
+            messageDisplay.textContent = 'Please fill in all required fields.';
+            return;
+        }
+
+        if (!emailRegex.test(email)) {
+             console.warn("Validation Error: Invalid email format.");
+             messageDisplay.classList.remove('hidden');
+             messageDisplay.style.backgroundColor = 'rgba(255, 99, 71, 0.2)';
+             messageDisplay.style.color = 'darkred';
+             messageDisplay.textContent = 'Please enter a valid email address.';
+             return;
+        }
+
+        // If validation passes (since it's front-end only)
+        // Simulate success and reset the form.
+        messageDisplay.classList.remove('hidden');
+        messageDisplay.style.backgroundColor = 'rgba(144, 238, 144, 0.3)'; // Light green
+        messageDisplay.style.color = 'darkgreen';
+        messageDisplay.textContent = 'Thank you for your message! I will respond soon.';
+
+        form.reset(); // Reset form fields
+        
+        // Hide success message after a few seconds
+        setTimeout(() => {
+            messageDisplay.classList.add('hidden');
+        }, 5000); 
+    });
+}
+
+document.addEventListener('DOMContentLoaded', setupFormValidation);
+// We now have 4/7 required JS features implemented!
