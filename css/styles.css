@@ -226,3 +226,84 @@ h1, h2, h3 {
         }
     }
 }
+
+.about-grid {
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.about-card {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px rgba(0, 0,0,0.05);
+}
+
+.about-card h3 {
+    color: var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.timeline-item, .experience-item {
+    margin-bottom: 25px;
+    padding-left: 15px;
+    border-left: 3px solid var(--secondary-color);
+}
+
+.timeline-item h4, .experience-item h4 {
+    margin-bottom: 5px;
+    color: var(--text-color);
+    font-size: 1.1em;
+}
+
+.institution, .details, .dates {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    margin-bottom: 3px;
+}
+
+.skill-group {
+    margin-bottom: 20px;
+}
+
+.skill-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-list li {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.skill-list.soft li {
+    background-color: var(--secondary-color);
+}
+
+@media (min-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1.5fr 1/5fr 1fr;
+        gap:40px;
+    }
+}
+
+@media (min-width: 600px) and (max-width:991px) {
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-card.skills {
+        grid-column: 1 / span 2;
+    }
+}
