@@ -8,10 +8,14 @@
     --nav-height: 60px;
 }
 
+/* CRITICAL: This block defines the dark colors when the body has the class "dark-mode" */
 .dark-mode {
-    --background-color:#1a1a1a;
-    --text-color:#f1f1f1;
-    --card-background: #333333;
+    --background-color: #1a1a1a; /* Dark background */
+    --text-color: #f1f1f1;      /* Light text */
+    --card-background: #333333; /* Darker card background */
+    
+    /* Ensure primary and secondary colors also look good in dark mode if needed */
+    --primary-color: #64b5f6; /* Lighter blue for better contrast */
 }
 
 * {
@@ -95,10 +99,10 @@ h1, h2, h3 {
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba (0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (mix-width:768px) {
+@media (min-width: 768px){
     #home {
         display: grid;
         grid-template-columns: 3fr 1fr;
@@ -160,7 +164,7 @@ h1, h2, h3 {
 #main-nav a:hover,
 #main-nav a.active {
     color: var(--primary-color);
-    border-bottom: 2px solid var (--primary-color);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 #main-nav a:focus,
@@ -293,7 +297,7 @@ h1, h2, h3 {
 
 @media (min-width: 992px) {
     .about-grid {
-        grid-template-columns: 1.5fr 1/5fr 1fr;
+        grid-template-columns: 1.5fr 1.5fr 1fr;
         gap:40px;
     }
 }

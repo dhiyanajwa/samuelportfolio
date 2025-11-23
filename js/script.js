@@ -1,26 +1,23 @@
+// ===============================================
 // JS Feature 1: Mobile Navigation Toggle
+// ===============================================
 function setupMobileMenu() {
-    // 1. Get references to the button and the navigation menu
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
 
-    // 2. Event Listener: Listen for a click on the button
+    if (!menuToggle || !mainNav) return;
+
     menuToggle.addEventListener('click', () => {
-        // 3. Toggle the 'open' class on the navigation menu
-        // This class is what controls the display in CSS (display: block/none)
+        const isExpanded = !mainNav.classList.contains('open');
         mainNav.classList.toggle('open');
         
         // CRITERIA 5: Accessibility enhancement (ARIA attributes)
-        const isExpanded = mainNav.classList.contains('open');
         menuToggle.setAttribute('aria-expanded', isExpanded);
-        
-        // Change the button text/icon based on state
         menuToggle.textContent = isExpanded ? '✕' : '☰';
     });
     
-    // Optional: Close menu when a link is clicked (useful for smooth scrolling)
-    const navLinks = mainNav.querySelectorAll('a');
-    navLinks.forEach(link => {
+    // Close menu when a link is clicked
+    mainNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             if (mainNav.classList.contains('open')) {
                 mainNav.classList.remove('open');
@@ -31,47 +28,88 @@ function setupMobileMenu() {
     });
 }
 
-// CRITERIA 3: Modular Code - Call the function to initialize the feature
-document.addEventListener('DOMContentLoaded', setupMobileMenu);
 
+// ===============================================
+// JS Feature 2: Active Navigation Link Highlighter (Intersection Observer)
+// CRITICAL MISSING FEATURE ADDED HERE
+// ===============================================
+function setupActiveNavHighlighter() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#main-nav a');
 
-// JS Feature 7: Dynamic Footer Year (Adding this now as it's simple)
-function setDynamicYear() {
-    const yearSpan = document.getElementById('current-year');
-    // Ensure the element exists before trying to update it
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
+    if (sections.length === 0 || navLinks.length === 0) return;
+
+    const observerOptions = {
+        // Activates the link when the section is approximately halfway through the viewport
+        rootMargin: '0px 0px -50% 0px', 
+        threshold: 0.1 
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove 'active' class from all links
+                navLinks.forEach(link => link.classList.remove('active'));
+
+                // Add 'active' class to the link corresponding to the visible section
+                const activeLink = document.querySelector(`#main-nav a[href="#${entry.target.id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 }
-document.addEventListener('DOMContentLoaded', setDynamicYear);
-// We now have 2/7 required JS features implemented!
 
+
+// ===============================================
+// JS Feature 3: Scroll to Top Button
+// ===============================================
+function setupScrollToTop() {
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    if (!scrollToTopBtn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+        });
+    });
+}
+
+
+// ===============================================
 // JS Feature 4: Project Filtering
+// ===============================================
 function setupProjectFiltering() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
     filterButtons.forEach(button => {
-        // CRITERIA 3: Meaningful comments for complex logic
         button.addEventListener('click', function() {
-            // 1. Get the filter value (e.g., 'web', 'mobile', 'all')
             const filterValue = this.getAttribute('data-filter');
 
-            // 2. Update button active state (visual feedback)
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
-            // 3. Iterate over all project cards
             projectCards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
 
-                // Check if the card should be shown or hidden
                 if (filterValue === 'all' || cardCategory === filterValue) {
-                    // Show the card (using opacity/visibility for smoother transition later if desired)
                     card.style.display = 'block'; 
-                    // Optional: You could add a class here and use CSS for smooth fading
                 } else {
-                    // Hide the card
                     card.style.display = 'none';
                 }
             });
@@ -79,32 +117,62 @@ function setupProjectFiltering() {
     });
 }
 
-// CRITERIA 3: Modular Code - Call the new function to initialize the feature
-document.addEventListener('DOMContentLoaded', setupProjectFiltering);
-// We now have 3/7 required JS features implemented!
 
-// JS Feature 6: Contact Form Validation (Front-end Only)
+// ===============================================
+// JS Feature 5: Dark/Light Mode Toggle with localStorage persistence
+// ===============================================
+function setupThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (!themeToggle) return;
+
+    // Load theme preference
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark') {
+        body.classList.add('dark-mode');
+        themeToggle.textContent = '🌙'; 
+    } else {
+        themeToggle.textContent = '☀️'; 
+    }
+
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+
+        // Update localStorage and button text/icon
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            themeToggle.textContent = '🌙';
+        } else {
+            localStorage.setItem('theme', 'light');
+            themeToggle.textContent = '☀️';
+        }
+    });
+}
+
+
+// ===============================================
+// JS Feature 6: Contact Form Validation
+// ===============================================
 function setupFormValidation() {
     const form = document.getElementById('contact-form');
     const messageDisplay = document.getElementById('form-message');
 
-    if (!form) return; // Exit if form element doesn't exist
+    if (!form) return; 
 
     form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Stop the default form submission
+        event.preventDefault(); 
 
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const message = document.getElementById('message').value.trim();
         
-        // Simple Email Regex check
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
 
         if (name === '' || email === '' || message === '') {
-            // CRITERIA 3: Console errors check. Use console.error for actual errors, console.log for simple debugging.
             console.warn("Validation Error: All fields are required.");
             messageDisplay.classList.remove('hidden');
-            messageDisplay.style.backgroundColor = 'rgba(255, 99, 71, 0.2)'; // Light tomato red
+            messageDisplay.style.backgroundColor = 'rgba(255, 99, 71, 0.2)';
             messageDisplay.style.color = 'darkred';
             messageDisplay.textContent = 'Please fill in all required fields.';
             return;
@@ -119,80 +187,43 @@ function setupFormValidation() {
              return;
         }
 
-        // If validation passes (since it's front-end only)
-        // Simulate success and reset the form.
+        // Success simulation
         messageDisplay.classList.remove('hidden');
-        messageDisplay.style.backgroundColor = 'rgba(144, 238, 144, 0.3)'; // Light green
+        messageDisplay.style.backgroundColor = 'rgba(144, 238, 144, 0.3)';
         messageDisplay.style.color = 'darkgreen';
         messageDisplay.textContent = 'Thank you for your message! I will respond soon.';
 
-        form.reset(); // Reset form fields
+        form.reset(); 
         
-        // Hide success message after a few seconds
         setTimeout(() => {
             messageDisplay.classList.add('hidden');
         }, 5000); 
     });
 }
 
-document.addEventListener('DOMContentLoaded', setupFormValidation);
-// We now have 4/7 required JS features implemented!
-
-// JS Feature 5: Dark/Light Mode Toggle with localStorage persistence
-function setupThemeToggle() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Load theme preference from the user's browser storage
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark') {
-        body.classList.add('dark-mode');
-        themeToggle.textContent = '🌙'; // Moon icon for dark mode
-    } else {
-        // Default is light mode
-        themeToggle.textContent = '☀️'; 
+// ===============================================
+// JS Feature 7: Dynamic Footer Year
+// ===============================================
+function setDynamicYear() {
+    // FIX: Element ID must match the corrected HTML: 'current-year'
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
     }
-
-    themeToggle.addEventListener('click', () => {
-        // Toggle the 'dark-mode' class (CSS variables handle the theme switch)
-        body.classList.toggle('dark-mode');
-
-        // Update localStorage and button text/icon
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-            themeToggle.textContent = '🌙';
-        } else {
-            localStorage.setItem('theme', 'light');
-            themeToggle.textContent = '☀️';
-        }
-    });
 }
-document.addEventListener('DOMContentLoaded', setupThemeToggle);
-// We now have 5/7 required JS features implemented!
 
 
-// JS Feature 3: Scroll to Top Button
-function setupScrollToTop() {
-    const scrollToTopBtn = document.getElementById('scroll-to-top');
-
-    // Show or hide the button based on scroll position
-    window.addEventListener('scroll', () => {
-        // Show button if user scrolls down more than 300px
-        if (window.scrollY > 300) {
-            scrollToTopBtn.classList.add('show');
-        } else {
-            scrollToTopBtn.classList.remove('show');
-        }
-    });
-
-    // Handle smooth scrolling when the button is clicked
-    scrollToTopBtn.addEventListener('click', () => {
-        // CRITERIA 2: Using 'smooth' behavior for the required smooth internal scrolling
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth' 
-        });
-    });
-}
-document.addEventListener('DOMContentLoaded', setupScrollToTop);
-// We now have 6/7 required JS features implemented!
+// ===============================================
+// INITIALIZATION (CRITERIA 3: Modular Initialization)
+// ===============================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize all 7+ features once the DOM is fully loaded
+    setupMobileMenu();
+    setupActiveNavHighlighter(); // Now included!
+    setupScrollToTop();
+    setupProjectFiltering();
+    setupThemeToggle();
+    setupFormValidation();
+    setDynamicYear();
+});
+// 7/7+ JS features complete!

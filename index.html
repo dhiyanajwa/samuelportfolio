@@ -2,25 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samuel Agal Dicky - Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-
     <header id="main-header">
-    <div class="logo">Samuel Dicky</div>
-    <nav id="main-nav">
+        <div class="logo">Samuel Dicky</div>
+        
+        <nav id="main-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
-    
-    <div class="header-controls">
-        <button id="theme-toggle" aria-label="Toggle dark/light theme">
-            ☀️
-        </button>
-        <button id="menu-toggle" aria-label="Toggle navigation menu">☰</button>
-    </div>
-</header>
+        
+        <div class="header-controls">
+            <button id="theme-toggle" aria-label="Toggle dark/light theme">
+                ☀️
+            </button>
+            <button id="menu-toggle" aria-label="Toggle navigation menu">☰</button>
+        </div>
+    </header>
 
     <main>
         <section id="home" class="hero">
@@ -28,10 +34,10 @@
                 <h1>Hi, I am Samuel Agal Dicky</h1>
                 <p class="subtitle">A CS Student specializing in Multimedia Computing</p>
                 
-                <article class="professional summary">
+                <article class="professional-summary">
                     <p>From organizing major campus events, handling content creation, and multimedia editing, I bring a unique blend of <strong>Leadership, Technical Skills and Front-End Development.</strong></p>
-
                 </article>
+                
                 <div class="cta-group">
                     <a href="#projects" class="cta-button primary">View Projects</a>
                     <a href="SAMUEL-AGAL-DICKY-FlowCV-Resume-20251117.pdf" target="_blank" class="cta-button secondary" aria-label="Download Samuel Dicky's Resume">Download CV</a>
@@ -39,7 +45,7 @@
             </div>
 
             <div class="hero-image">
-                <img src="assets/images/samuel-photo.png" alt = "Professional potrait of Samuel Agal Dicky, a web developer." width="400" height="400">
+                <img src="assets/images/samuel-photo.png" alt="Professional portrait of Samuel Agal Dicky, a web developer." width="400" height="400">
             </div>
         </section>
 
@@ -49,14 +55,12 @@
             <div class="about-grid">
                 <article class="about-card education">
                     <h3> 🎓 Education</h3>
-
                     <div class="timeline-item">
                         <h4>Bachelor in Computer Science (Multimedia Computing) with Honours</h4>
                         <p class="institution">University Malaysia Sarawak (UNIMAS)</p>
                         <p class="details">CGPA 3.36</p>
                         <p class="dates">10/2023-Present</p>
                     </div>
-
                     <div class="timeline-item">
                         <h4>Sijil Tinggi Pelajaran Malaysia (Sains Hayat)</h4>
                         <p class="institution">SMK Muara Tuang</p>
@@ -67,19 +71,16 @@
 
                 <article class="about-card experience">
                     <h3>💼 Professional & Relevant Experience</h3>
-
                     <div class="experience-item">
                         <h4>Editor & Subtitler</h4>
                         <p class="institution">Prestige Studio Sdn Bhd</p>
                         <p class="dates">05/2023-09/2023</p>
                     </div>
-
                     <div class="experience-item">
                         <h4>Majlis Perwakilan Pelajar (Exco Kebajukan dan Kesejahteraan Mahasiswa)</h4>
                         <p class="institution">Ex-Officio, FSCIT</p>
                         <p class="dates">11/2024-10/2025</p>
                     </div>
-
                     <div class="experience-item">
                         <h4>Program Director, 29th Convocation Festival</h4>
                         <p class="institution">UNIMAS</p>
@@ -99,8 +100,8 @@
                     <div class="skill-group">
                         <h4>Tools and Software</h4>
                         <ul class="skill-list">
-                            <li>Canva,Figma</li>
-                            <li>Powerpoint Words, Excel</li>
+                            <li>Canva, Figma</li>
+                            <li>Powerpoint, Words, Excel</li>
                         </ul>
                     </div>
                     <div class="skill-group">
@@ -108,7 +109,7 @@
                         <ul class="skill-list soft">
                             <li>Leadership</li>
                             <li>Communication</li>
-                            <li>TeamWork</li>
+                            <li>Teamwork</li>
                             <li>Adaptability</li>
                         </ul>
                     </div>
@@ -120,20 +121,19 @@
             <h2>💻 Projects</h2>
 
             <div class="project-filters">
-                <button class="filter-btn active" data filter="'all">All</button>
-                <button class="filter-btn" data filter="web">Web Development</button>
-                <button class="filter-btn" data filter="mobile">Mobile/Cross-Platform</button>
-                <button class="filter-btn" data filter="multimedia">Multimedia Tools</button>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="mobile">Mobile/Cross-Platform</button>
+                <button class="filter-btn" data-filter="multimedia">Multimedia Tools</button>
             </div>
 
             <div class="projects-grid">
-
                 <article class="project-card" data-category="web">
-                    <img src="assets/images/project1.jpg" alt="Screenshot of a responsive personal weebsite" loading="lazy">
+                    <img src="assets/images/project1.jpg" alt="Screenshot of a responsive personal website" loading="lazy">
                     <div class="card-content">
                         <h3>Responsive Portfolio Website</h3>
                         <p>A demonstration of clean, semantic HTML5, modern CSS (Grid/Flexbox), and pure JavaScript interactivity. Focused on accessibility and performance.</p>
-                        <p class="tech stack"><strong>Tech:</strong>HTML, CSS, JavaScript, Accesibility</p>
+                        <p class="tech-stack"><strong>Tech:</strong> HTML, CSS, JavaScript, Accessibility</p>
                         <div class="project-links">
                             <a href="#" target="_blank" aria-label="View live demo of Responsive Portfolio" class="link-button">Live Demo</a>
                             <a href="#" target="_blank" aria-label="View source code on GitHub" class="link-button github">GitHub</a>
@@ -144,20 +144,23 @@
                 <article class="project-card" data-category="mobile">
                     <img src="assets/images/project2.jpg" alt="Screenshot of a mobile application interface built with Flutter." loading="lazy">
                     <div class="card-content">
-                        <h3>Project 2</h3>
-                        <p>Project Desc 2</p>
-                        <a href="#" target="_blank" aria-label="View Project 2" class="link-button">Project 2 <link rel="stylesheet" href=""></a>
+                        <h3>Campus Event Management App</h3>
+                        <p>A cross-platform mobile application developed using Flutter and Kotlin to streamline campus event registration, announcements, and feedback collection for UNIMAS events.</p>
+                        <p class="tech-stack"><strong>Tech:</strong> Flutter, Kotlin, Firebase/MySQL</p>
+                        <div class="project-links">
+                             <a href="#" target="_blank" aria-label="View demo video of Event Management App" class="link-button">Demo Video</a>
+                        </div>
                     </div>
                 </article>
 
                 <article class="project-card" data-category="multimedia">
-                    <img src="assets/images/project3.jpg" alt="Screenshot of Project 3">
+                    <img src="assets/images/project3.jpg" alt="Screenshot of a simple content editing tool interface." loading="lazy">
                     <div class="card-content">
-                        <h3>Project 3</h3>
-                        <p>Project Desc 3</p>
-                        <p class="tech stack"><strong>Tech:</strong>PHP, MySQL, HTML, CSS</p>
+                        <h3>Simple Content Subtitling Tool</h3>
+                        <p>A web-based tool using PHP and MySQL to manage and generate basic video subtitles and content edits, reflecting experience gained as an Editor & Subtitler at Prestige Studio Sdn Bhd.</p>
+                        <p class="tech-stack"><strong>Tech:</strong> PHP, MySQL, HTML, CSS</p>
                         <div class="project-links">
-                            <a href="#" target="_blank" aria-label="View project 3" class="link-button">Documentation</a>
+                            <a href="#" target="_blank" aria-label="View project documentation" class="link-button">Documentation</a>
                         </div>
                     </div>
                 </article>
@@ -165,45 +168,45 @@
         </section>
 
         <section id="contact" class="page-section">
-    <h2>✉️ Get In Touch</h2>
-    <p class="contact-intro">I'm currently seeking opportunities in Web and Multimedia Development. Whether you have a question or just want to say hi, feel free to reach out!</p>
+            <h2>✉️ Get In Touch</h2>
+            <p class="contact-intro">I'm currently seeking opportunities in Web and Multimedia Development. Whether you have a question or just want to say hi, feel free to reach out!</p>
 
-    <div class="contact-wrapper">
-        
-        <form id="contact-form" class="contact-form" action="#" method="POST">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required aria-required="true">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required aria-required="true">
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
-            </div>
-            <button type="submit" class="cta-button primary">Send Message</button>
-            <p id="form-message" class="hidden" aria-live="polite"></p>
-        </form>
+            <div class="contact-wrapper">
+                <form id="contact-form" class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button primary">Send Message</button>
+                    <p id="form-message" class="hidden" aria-live="polite"></p>
+                </form>
 
-        <div class="contact-info">
-            <h3>Alternative Contact</h3>
-            <p>I usually respond within 24 hours.</p>
-            <p><strong>Email:</strong> <a href="mailto:samuelagal04@gmail.com" aria-label="Email Samuel Agal Dicky" class="email-link">samuelagal04@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="inlinkedin.com/in/samuel-dicky-09b2192a4" target="_blank" aria-label="View Samuel Dicky's LinkedIn Profile" class="email-link">View Profile</a></p>
-        </div>
-    </div>
-</section>
+                <div class="contact-info">
+                    <h3>Alternative Contact</h3>
+                    <p>I usually respond within 24 hours.</p>
+                    <p><strong>Email:</strong> <a href="mailto:samuelagal04@gmail.com" aria-label="Email Samuel Agal Dicky" class="email-link">samuelagal04@gmail.com</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/samuel-dicky-09b2192a4" target="_blank" aria-label="View Samuel Dicky's LinkedIn Profile" class="email-link">View Profile</a></p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <button id="scroll-to-top" aria-label="Scroll back to the top of the page">
-    ⬆️
-</button>
+        ⬆️
+    </button>
 
     <footer>
-        <p>&copy; <span id="current year"></span> Samuel Agal Dicky. All rights reserved</p>
+        <p>&copy; <span id="current-year"></span> Samuel Agal Dicky. All rights reserved</p>
     </footer>
 
-    <script src="js/scripts.js"></script>
+    <script src="js/script.js"></script>
 </body>
+</html>
