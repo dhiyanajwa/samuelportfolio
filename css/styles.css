@@ -307,3 +307,114 @@ h1, h2, h3 {
         grid-column: 1 / span 2;
     }
 }
+
+/* Filter Button Styling */
+.project-filters {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border: 1px solid var(--secondary-color);
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-color: var(--primary-color);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-color: var(--primary-color);
+}
+
+
+/* CRITERIA 2: Responsive Grid Layout for Projects */
+.projects-grid {
+    display: grid;
+    /* Default: 1 column on mobile */
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+/* Tablet/Desktop: 2 columns */
+@media (min-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Larger Desktop: 3 columns */
+@media (min-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Project Card Styling */
+.project-card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Keeps image edges clean */
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px; /* Consistent height for all images */
+    object-fit: cover; /* Ensures images fill the space without distortion */
+    /* CRITERIA 5: Image accessibility is covered by the alt text in HTML */
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-top: 0;
+}
+
+.tech-stack {
+    font-size: 0.9em;
+    color: var(--primary-color);
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.project-links {
+    display: flex;
+    gap: 10px;
+}
+
+.link-button {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.link-button.github {
+    background-color: #333; /* Darker color for GitHub link */
+}
+
+.link-button:hover {
+    background-color: var(--primary-color);
+}

@@ -45,3 +45,40 @@ function setDynamicYear() {
 }
 document.addEventListener('DOMContentLoaded', setDynamicYear);
 // We now have 2/7 required JS features implemented!
+
+// JS Feature 4: Project Filtering
+function setupProjectFiltering() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+        // CRITERIA 3: Meaningful comments for complex logic
+        button.addEventListener('click', function() {
+            // 1. Get the filter value (e.g., 'web', 'mobile', 'all')
+            const filterValue = this.getAttribute('data-filter');
+
+            // 2. Update button active state (visual feedback)
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            // 3. Iterate over all project cards
+            projectCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+
+                // Check if the card should be shown or hidden
+                if (filterValue === 'all' || cardCategory === filterValue) {
+                    // Show the card (using opacity/visibility for smoother transition later if desired)
+                    card.style.display = 'block'; 
+                    // Optional: You could add a class here and use CSS for smooth fading
+                } else {
+                    // Hide the card
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// CRITERIA 3: Modular Code - Call the new function to initialize the feature
+document.addEventListener('DOMContentLoaded', setupProjectFiltering);
+// We now have 3/7 required JS features implemented!

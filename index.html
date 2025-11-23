@@ -118,6 +118,50 @@
 
         <section id="projects" class="page-section">
             <h2>💻 Projects</h2>
+
+            <div class="project-filters">
+                <button class="filter-btn active" data filter="'all">All</button>
+                <button class="filter-btn" data filter="web">Web Development</button>
+                <button class="filter-btn" data filter="mobile">Mobile/Cross-Platform</button>
+                <button class="filter-btn" data filter="multimedia">Multimedia Tools</button>
+            </div>
+
+            <div class="projects-grid">
+
+                <article class="project-card" data-category="web">
+                    <img src="assets/images/project1.jpg" alt="Screenshot of a responsive personal weebsite" loading="lazy">
+                    <div class="card-content">
+                        <h3>Responsive Portfolio Website</h3>
+                        <p>A demonstration of clean, semantic HTML5, modern CSS (Grid/Flexbox), and pure JavaScript interactivity. Focused on accessibility and performance.</p>
+                        <p class="tech stack"><strong>Tech:</strong>HTML, CSS, JavaScript, Accesibility</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank" aria-label="View live demo of Responsive Portfolio" class="link-button">Live Demo</a>
+                            <a href="#" target="_blank" aria-label="View source code on GitHub" class="link-button github">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="mobile">
+                    <img src="assets/images/project2.jpg" alt="Screenshot of a mobile application interface built with Flutter." loading="lazy">
+                    <div class="card-content">
+                        <h3>Project 2</h3>
+                        <p>Project Desc 2</p>
+                        <a href="#" target="_blank" aria-label="View Project 2" class="link-button">Project 2 <link rel="stylesheet" href=""></a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="multimedia">
+                    <img src="assets/images/project3.jpg" alt="Screenshot of Project 3">
+                    <div class="card-content">
+                        <h3>Project 3</h3>
+                        <p>Project Desc 3</p>
+                        <p class="tech stack"><strong>Tech:</strong>PHP, MySQL, HTML, CSS</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank" aria-label="View project 3" class="link-button">Documentation</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </section>
 
         <section id="contact" class="page-section">
