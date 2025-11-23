@@ -120,5 +120,109 @@ h1, h2, h3 {
     .cta-group {
         justify-content: flex-start; /*align buttons to the left */
     }
-    
+}
+
+#main-header {
+    position:fixed; /*navigation looks persistent*/
+    top:0;
+    left:0;
+    width:100%;
+    height: var(--nav-height);
+    background-color: var(--card-background);
+    box-shadow: 0 2px 5px rgba (0,0,0,0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.logo {
+    font-size:1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+
+}
+
+#main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+#main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 5px 0;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+#main-nav a:hover,
+#main-nav a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var (--primary-color);
+}
+
+#main-nav a:focus,
+.cta-button:focus,
+#menu-toggle:focus {
+    outline: 2px dashed var(--primary-color);
+    outline-offset: 3px;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+@media (max-width:767px) {
+    #menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.8em;
+        cursor: pointer;
+        color: var(--text-color);
+        padding: 5px;
+        line-height: 1;
+    }
+
+    #main-nav {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--card-background);
+        box-shadow: 0 4px 5px rgba(0, 0,0,0.1);
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    #main-nav.open {
+        display: block;
+    }
+
+    #main-nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #main-nav li {
+        border-bottom: 1px solid rgba(0, 0,0,0.05);
+    }
+
+    #main-nav a {
+        display: block;
+        padding: 15px 20px;
+        width: 100%;
+    }
+
+    @media (min-width:768px) {
+        #main-nav {
+            display: block;
+            position: static;
+            box-shadow: none;
+            padding: 0;
+        }
+    }
 }
